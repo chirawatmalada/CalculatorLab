@@ -78,9 +78,12 @@ namespace CPE200Lab1
             {
                 return;
             }
+
+            string temp;
+            temp = operate;
             operate = ((Button)sender).Text;
 
-            if(firstOperand != null)
+            if(firstOperand != null && operate != "%")
             {
                 string secondOperand = lblDisplay.Text;
                 string result = engine.calculate(operate, firstOperand, secondOperand);
@@ -108,7 +111,8 @@ namespace CPE200Lab1
                         break;
                     case "%":
                         // your code here
-
+                        lblDisplay.Text = ((Convert.ToDouble(firstOperand) * Convert.ToDouble(lblDisplay.Text)) / 100).ToString();
+                        operate = temp;
                         break;
                 }
             }
