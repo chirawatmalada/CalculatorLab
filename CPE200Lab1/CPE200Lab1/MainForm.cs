@@ -103,7 +103,11 @@ namespace CPE200Lab1
             {
                 return;
             }
-            if(firstOperand != null)
+            string temp;
+            temp = operate;
+            operate = ((Button)sender).Text;
+
+            if (firstOperand != null )
             {
                 string secondOperand = lblDisplay.Text;
                 string result = engine.calculate(operate, firstOperand, secondOperand);
@@ -128,6 +132,8 @@ namespace CPE200Lab1
                     break;
                 case "%":
                     // your code here
+                    lblDisplay.Text = engine.calculate(operate, firstOperand, lblDisplay.Text);
+                    operate = temp;
                     break;
             }
             isAllowBack = false;
