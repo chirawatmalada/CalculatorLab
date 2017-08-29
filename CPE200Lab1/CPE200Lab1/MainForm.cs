@@ -18,6 +18,7 @@ namespace CPE200Lab1
         private bool isAfterEqual;
         private string firstOperand;
         private string operate;
+        private double memnum;
 
         //Variable for CalculatorEngine
         CalculatorEngine engine;
@@ -26,11 +27,11 @@ namespace CPE200Lab1
         private void resetAll()
         {
             firstOperand = null;
-            lblDisplay.Text = "0";
-            isAllowBack = true;
+            lblDisplay.Text = "0"; //ตัวที่อยู่ตรงหน้าจอ
+            isAllowBack = true; //Delete
             hasDot = false;
-            isAfterOperater = false;
-            isAfterEqual = false;
+            isAfterOperater = false; //เชคว่ามีการกดเครื่องหมายรึยัง
+            isAfterEqual = false; 
         }
 
         public MainForm()
@@ -113,6 +114,12 @@ namespace CPE200Lab1
                         // your code here
                         lblDisplay.Text = engine.calculate(operate, firstOperand, lblDisplay.Text);
                         operate = temp;
+                        break;
+                    case "√":
+
+                        firstOperand = lblDisplay.Text;
+                        isAfterOperater = true;
+                        lblDisplay.Text = engine.calculate(operate, firstOperand, lblDisplay.Text);
                         break;
                 }
             }
@@ -217,5 +224,22 @@ namespace CPE200Lab1
                 }
             }
         }
+
+        private void mr(object sender, EventArgs e)
+        {
+            string operateM = ((Button)sender).Text;
+            double num = 0;
+            num = Convert.ToDouble(lblDisplay.Text);
+            isAfterOperater = true;
+            switch (operateM)
+            {
+                case "M+": memnum += num; break;
+                case "M-": memnum -= num; break;
+                case "MC": lblDisplay.Text = memnum.ToString(); memnum = 0; break;
+                case "MS": memnum = Convert.ToDouble(lblDisplay.Text); break;
+                case "MR": lblDisplay.Text = memnum.ToString(); break;
+            }
+        }
     }
 }
+
