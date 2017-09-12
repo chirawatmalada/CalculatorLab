@@ -8,15 +8,16 @@ namespace CPE200Lab1
 {
     class CalculatorEngine
     {
-        private bool isNumber(string str)
+        public bool isNumber(string str)
         {
             double retNum;
             return Double.TryParse(str, out retNum);
         }
 
-        private bool isOperator(string str)
+        public bool isOperator(string str)
         {
-            switch(str) {
+            switch (str)
+            {
                 case "+":
                 case "-":
                 case "X":
@@ -30,12 +31,13 @@ namespace CPE200Lab1
         {
             List<string> parts = str.Split(' ').ToList<string>();
             string result;
-            while(parts.Count > 1)
+            while (parts.Count > 1)
             {
-                if(!(isNumber(parts[0]) && isOperator(parts[1]) && isNumber(parts[2])))
+                if (!(isNumber(parts[0]) && isOperator(parts[1]) && isNumber(parts[2])))
                 {
                     return "E";
-                } else
+                }
+                else
                 {
                     result = calculate(parts[1], parts[0], parts[2], 4);
                     parts.RemoveRange(0, 3);
@@ -68,7 +70,7 @@ namespace CPE200Lab1
                         return result.ToString("N" + remainLength);
                     }
                 case "1/x":
-                    if(operand != "0")
+                    if (operand != "0")
                     {
                         double result;
                         string[] parts;
