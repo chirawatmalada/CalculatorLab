@@ -11,19 +11,19 @@ namespace CPE200Lab1.Tests
     [TestClass()]
     public class RPNCalculatorEngineTests
     {
-        RPNCalculatorEngine engine;
+        RPNCalculatorEngin engine;
 
         [TestInitialize()]
         public void Initialize()
         {
-            engine = new RPNCalculatorEngine();
+            engine = new RPNCalculatorEngin();
         }
 
         [TestMethod()]
         public void ConstructorTest()
         {
             Assert.IsNotNull(engine);
-            Assert.IsInstanceOfType(engine, typeof(RPNCalculatorEngine));
+            Assert.IsInstanceOfType(engine, typeof(RPNCalculatorEngin));
         }
 
         [TestMethod()]

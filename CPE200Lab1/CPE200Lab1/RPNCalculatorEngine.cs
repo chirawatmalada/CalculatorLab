@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CPE200Lab1
 {
-    class RPNCalculatorEngins : CalculatorEngine
+    public class RPNCalculatorEngin : CalculatorEngine
     {
         public string Process(string str)
         {
